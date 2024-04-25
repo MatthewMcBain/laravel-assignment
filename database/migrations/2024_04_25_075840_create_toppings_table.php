@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('toppings', function (Blueprint $table) {
             $table->id();
+            $table->string('topping_name');
             $table->timestamps();
         });
     }

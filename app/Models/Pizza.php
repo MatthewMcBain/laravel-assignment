@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Pizza extends Model
 {
@@ -12,11 +13,12 @@ class Pizza extends Model
 
     protected $fillable = [
         'pizza_name',
+        'toppings'
     ];
 
-    public function toppings(): HasMany
+    public function toppings(): BelongsToMany
     {
-        return $this->hasMany(Topping::class);
+        return $this->belongsToMany(Topping::class);
     }
 
     public function orderItems(): HasMany
@@ -24,8 +26,8 @@ class Pizza extends Model
         return $this->hasMany(OrderItem::class);
     }
 
-    public function orders(): HasMany
+    public function orders(): BelongsToMany
     {
-        return $this->hasMany(Order::class);
+        return $this->belongsToMany(Order::class);
     }
 }

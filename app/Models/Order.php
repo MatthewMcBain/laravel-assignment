@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Order extends Model
 {
@@ -16,9 +17,9 @@ class Order extends Model
         return $this->hasMany(OrderItem::class);
     }
 
-    public function pizzas(): HasMany
+    public function pizzas(): BelongsToMany
     {
-        return $this->hasMany(Pizza::class);
+        return $this->belongsToMany(Pizza::class);
     }
 
     public function user(): BelongsTo

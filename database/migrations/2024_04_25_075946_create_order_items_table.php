@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('order_items', function (Blueprint $table) {
             $table->id();
             $table->string('pizza_name');
-            $table->array('topping_name');
+            // $table->array('topping_name');
             $table->string('size');
             $table->string('price');
             $table->timestamps();

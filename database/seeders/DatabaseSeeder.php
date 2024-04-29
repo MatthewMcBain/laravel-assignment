@@ -68,6 +68,9 @@ class DatabaseSeeder extends Seeder
             'topping_name' => 'sweetcorn',
         ]);
         DB::table('toppings')->insert([
+            'topping_name' => 'chicken',
+        ]);
+        DB::table('toppings')->insert([
             'topping_name' => 'jalapeno peppers',
         ]);
         DB::table('toppings')->insert([

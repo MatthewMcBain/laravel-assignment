@@ -1,6 +1,6 @@
 <x-app-layout>
    <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
-       <form method="POST" action="{{ route('pizzas.store') }}">
+       <!-- <form method="POST" action="{{ route('pizzas.store') }}">
            @csrf
            <textarea
                name="message"
@@ -9,7 +9,10 @@
            >{{ old('message') }}</textarea>
            <x-input-error :messages="$errors->get('message')" class="mt-2" />
            <x-primary-button class="mt-4">{{ __('Pizza') }}</x-primary-button>
-       </form>
+       </form> -->
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Pizzas') }}
+        </h2>
 
        <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
             @foreach ($pizzas as $pizza)

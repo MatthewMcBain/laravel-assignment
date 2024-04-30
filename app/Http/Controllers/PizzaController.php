@@ -15,7 +15,10 @@ class PizzaController extends Controller
     public function index(): View 
     {
         //
-        return view('pizzas.index');
+        // return view('pizzas.index');
+        return view('pizzas.index', [
+            'pizzas' => Pizza::get(),
+        ]);
     }
 
     /**

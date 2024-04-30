@@ -15,21 +15,25 @@ class DatabaseSeeder extends Seeder
     {
         DB::table('pizzas')->insert([
             'pizza_name' => 'Margherita',
+            'description' => 'cheese, tomato sauce'
             // 'topping_name' => ['cheese', 'tomato sauce']
         ]);
 
         DB::table('pizzas')->insert([
             'pizza_name' => 'Gimme the Meat',
+            'description' => 'cheese, tomato sauce, pepperoni, ham, chicken, minced beef, sausage, bacon'
             // 'topping_name' => ['cheese', 'tomato sauce', 'pepperoni', 'ham', 'chicken', 'minced beef', 'sausage', 'bacon']
         ]);
 
         DB::table('pizzas')->insert([
             'pizza_name' => 'Veggie Delight',
+            'description' => 'cheese, tomato sauce, onions, green peppers, mushrooms, sweetcorn'
             // 'topping_name' => ['cheese', 'tomato sauce', 'onions', 'green peppers', 'mushrooms', 'sweetcorn']
         ]);
 
         DB::table('pizzas')->insert([
             'pizza_name' => 'Make Mine Hot',
+            'description' => 'cheese, tomato sauce, chicken, onions, green peppers, jalapeno peppers'
             // 'topping_name' => ['cheese', 'tomato sauce', 'chicken', 'onions', 'green peppers', 'jalapeno peppers']
         ]);
 

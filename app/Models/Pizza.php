@@ -13,7 +13,7 @@ class Pizza extends Model
 
     protected $fillable = [
         'pizza_name',
-        'toppings'
+        'description'
     ];
 
     public function toppings(): BelongsToMany

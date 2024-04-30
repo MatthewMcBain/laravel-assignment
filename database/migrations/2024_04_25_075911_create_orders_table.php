@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('pizza_name');
-            $table->string('price');
+            $table->double('price');
             $table->timestamps();
         });
     }

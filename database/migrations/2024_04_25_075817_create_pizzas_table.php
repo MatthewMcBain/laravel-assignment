@@ -15,7 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('pizza_name');
             $table->string('description');
-            // $table->array('topping_name');
+            // $table->enum('size', ['small', 'medium', 'large']);
+            // $table->enum('size', {'small': '', 'medium', 'large'});
+            // $table->json('topping_name');
+            // $table->set('toppings', ['cheese', 'tomato sauce']);
             $table->timestamps();
         });
     }

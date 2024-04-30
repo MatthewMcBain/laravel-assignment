@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('pizza_name');
             // $table->array('topping_name');
+            // $table->json('topping_names');
             $table->string('size');
-            $table->string('price');
+            $table->double('price');
             $table->timestamps();
         });
     }

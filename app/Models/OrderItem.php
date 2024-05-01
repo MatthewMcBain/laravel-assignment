@@ -21,10 +21,10 @@ class OrderItem extends Model
     {
         return $this->belongsTo(Pizza::class);
     }
-
-    public function toppings(): BelongsToMany
+    
+    public function toppings(): HasMany
     {
-        return $this->belongsToMany(Topping::class);
+        return $this->hasMany(Topping::class);
     }
 
     public function order(): BelongsTo

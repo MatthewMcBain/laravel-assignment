@@ -21,8 +21,8 @@ class Topping extends Model
         return $this->belongsTo(Pizza::class);
     }
 
-    public function orderItems(): BelongsToMany
+    public function orderItems(): BelongsTo
     {
-        return $this->belongsToMany(OrderItem::class);
+        return $this->belongsTo(OrderItem::class);
     }
 }

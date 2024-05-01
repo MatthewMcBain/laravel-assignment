@@ -16,12 +16,12 @@ class Topping extends Model
         'topping_name',
     ];
 
-    public function pizzas(): BelongsTo
+    public function pizza(): BelongsTo
     {
         return $this->belongsTo(Pizza::class);
     }
 
-    public function orderItems(): BelongsTo
+    public function orderItem(): BelongsTo
     {
         return $this->belongsTo(OrderItem::class);
     }

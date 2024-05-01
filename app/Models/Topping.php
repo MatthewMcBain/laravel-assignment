@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Topping extends Model
@@ -15,9 +16,9 @@ class Topping extends Model
         'topping_name',
     ];
 
-    public function pizzas(): BelongsToMany
+    public function pizzas(): BelongsTo
     {
-        return $this->belongsToMany(Pizza::class);
+        return $this->belongsTo(Pizza::class);
     }
 
     public function orderItems(): BelongsToMany

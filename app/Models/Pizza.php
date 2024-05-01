@@ -16,9 +16,9 @@ class Pizza extends Model
         'description'
     ];
 
-    public function toppings(): BelongsToMany
+    public function toppings(): HasMany
     {
-        return $this->belongsToMany(Topping::class);
+        return $this->HasMany(Topping::class);
     }
 
     public function orderItems(): HasMany

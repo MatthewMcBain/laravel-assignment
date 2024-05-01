@@ -14,8 +14,6 @@ return new class extends Migration
         Schema::create('order_pizza', function (Blueprint $table) {
             $table->order_id();
             $table->pizza_id();
-            $table->string('pizza_name');
-            $table->string('description');
         });
     }
 
@@ -24,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('order_pizza');
     }
 };

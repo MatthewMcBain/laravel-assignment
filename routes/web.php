@@ -50,6 +50,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
         '/pizzas/cart',
         [PizzaController::class, 'cart']
     )->name('pizzas.cart');
+    // Route::post(
+    //     '/pizzas/addToCart',
+    //     [PizzaController::class, 'addToOrder']
+    // )->name('pizzas.cart.order.add');
+
+    // Route::resource('cart', PizzaController::class)
+    //     ->only(['index', 'store']);
 });
 
 require __DIR__ . '/auth.php';

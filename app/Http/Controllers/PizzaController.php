@@ -20,6 +20,24 @@ class PizzaController extends Controller
         return redirect(route('pizzas.index'));
     }
 
+    public function addToOrder(Pizza $pizza): RedirectResponse
+    {
+        $validated = $pizza->validate([
+            'pizza_name' => 'required|string|max:255',
+        ]);
+
+        // $request->user()->chirps()->create($validated);
+        // $request->user()->pizzas()->create($validated);
+        $pizza->user()->orders()->create($validated);
+
+        // return redirect(route('pizzas.cart'));
+        // $cart = session('cart', collect([]));
+        // $cart->push($pizza);
+        // session(['cart' => $cart]);
+
+        return redirect(route('pizzas.index'));
+    }
+
 
     /**    * Show the Pizzas in Cart
      */
@@ -54,10 +72,25 @@ class PizzaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    // public function store(Request $request)
+    // {
+    //     //
+    // }
+
+    public function store(Request $request): RedirectResponse
     {
-        //
+        $validated = $request->validate([
+            'pizza_name' => 'required|string|max:255',
+        ]);
+
+        // $request->user()->chirps()->create($validated);
+        // $request->user()->pizzas()->create($validated);
+        $request->user()->orders()->create($validated);
+
+        return redirect(route('pizzas.cart'));
     }
+
+    
 
     /**
      * Display the specified resource.

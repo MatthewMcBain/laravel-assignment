@@ -4,17 +4,39 @@ namespace App\Http\Controllers;
 
 use App\Models\Pizza;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
 
 class PizzaController extends Controller
 {
+    /**    * Add the Pizza to Cart
+     */
+    public function addToCart(Pizza $pizza): RedirectResponse
+    {
+        $cart = session('cart', collect([]));
+        $cart->push($pizza);
+        session(['cart' => $cart]);
+        return redirect(route('pizzas.index'));
+    }
+
+
+    /**    * Show the Pizzas in Cart
+     */
+    public function cart(): View
+    {
+        $cart = session('cart', collect([]));
+        return view('pizzas.cart', [
+            'pizzas' => $cart,
+        ]);
+    }
+
+
     /**
      * Display a listing of the resource.
      */
-    public function index(): View 
+    public function index(): View
     {
-        //
         // return view('pizzas.index');
         return view('pizzas.index', [
             'pizzas' => Pizza::get(),

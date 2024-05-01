@@ -14,10 +14,6 @@
                         </div>
                     </div>
                     <p class="mt-4 text-lg text-gray-900">{{ $pizza->description }}</p>
-                    <form method="POST" action="{{ route('pizzas.cart.add', $pizza) }}">
-                        @csrf
-                        <x-primary-button class="mt-4">{{ __('Add to cart') }}</x-primary-button>
-                    </form>
                 </div>
             </div>
             @endforeach

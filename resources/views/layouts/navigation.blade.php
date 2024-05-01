@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('pizzas.index')" :active="request()->routeIs('pizzas.index')">
                         {{ __('Pizzas') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('pizzas.cart')" :active="request()->routeIs('pizzas.cart')">
+                        {{ __('Cart') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -45,8 +48,7 @@
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
+                            <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
@@ -76,6 +78,9 @@
             <x-responsive-nav-link :href="route('pizzas.index')" :active="request()->routeIs('pizzas.index')">
                 {{ __('Pizzas') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('pizzas.cart')" :active="request()->routeIs('pizzas.cart')">
+                {{ __('Cart') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
@@ -94,8 +99,7 @@
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
-                    <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
+                    <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>

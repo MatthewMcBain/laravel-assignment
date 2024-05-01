@@ -33,10 +33,23 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('pizzas', PizzaController::class)
+// Route::resource('pizzas', PizzaController::class)
 
-    ->only(['index', 'store'])
+//     ->only(['index', 'store'])
 
-    ->middleware(['auth', 'verified']); 
+//     ->middleware(['auth', 'verified']);
 
-require __DIR__.'/auth.php';
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::resource('pizzas', PizzaController::class)
+        ->only(['index', 'store']);
+    Route::post(
+        '/pizzas/{pizza}/addToCart',
+        [PizzaController::class, 'addToCart']
+    )->name('pizzas.cart.add');
+    Route::get(
+        '/pizzas/cart',
+        [PizzaController::class, 'cart']
+    )->name('pizzas.cart');
+});
+
+require __DIR__ . '/auth.php';

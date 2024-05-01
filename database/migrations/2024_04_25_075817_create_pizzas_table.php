@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('description');
             // $table->enum('size', ['small', 'medium', 'large']);
             // $table->enum('size', {'small': '', 'medium', 'large'});
+            // $table->json('size');
             // $table->json('topping_name');
             // $table->set('toppings', ['cheese', 'tomato sauce']);
             $table->timestamps();

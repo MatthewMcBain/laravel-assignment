@@ -21,7 +21,7 @@ return new class extends Migration
             // $table->array('toppings');
             // $table->json('topping_name');
             // $table->set('toppings', ['cheese', 'tomato sauce']); - preferably
-            $table->timestamps();
+            // $table->timestamps();
         });
     }
 

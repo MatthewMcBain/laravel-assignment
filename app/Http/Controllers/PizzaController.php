@@ -20,7 +20,7 @@ class PizzaController extends Controller
         return redirect(route('pizzas.index'));
     }
 
-    public function addToOrder(Pizza $pizza): RedirectResponse
+    public function addToOrder(Pizza $pizzas): RedirectResponse
     {
         // $validated = $pizza->validate([
         //     'pizza_name' => 'required|string|max:255',
@@ -28,7 +28,7 @@ class PizzaController extends Controller
 
         // $request->user()->chirps()->create($validated);
         // $request->user()->pizzas()->create($validated);
-        $pizza->user()->orders()->create($pizza);
+        $pizzas->user()->orders()->create();
 
         // return redirect(route('pizzas.cart'));
         // $cart = session('cart', collect([]));

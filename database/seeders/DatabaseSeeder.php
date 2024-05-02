@@ -13,101 +13,125 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('pizzas')->insert([
-            'pizza_name' => 'Margherita',
-            'description' => 'cheese, tomato sauce'
-            // 'size' => ['small', 'medium', 'large']
-            // $table->json('size');
-            // 'toppings' => ['cheese', 'tomato sauce']
-            // 'toppings'.add('cheese', 'tomato sauce')
-            // 'topping_name' => ['cheese', 'tomato sauce']
-            // $pizza->toppings()->attach($topping)
-        ]);
-        
-
-        DB::table('pizzas')->insert([
-            'pizza_name' => 'Gimme the Meat',
-            'description' => 'cheese, tomato sauce, pepperoni, ham, chicken, minced beef, sausage, bacon'
-            // 'size' => {'small': '', 'medium', 'large'}
-            // 'toppings'.add('cheese', 'tomato sauce', 'pepperoni', 'ham', 'chicken', 'minced beef', 'sausage', 'bacon')
-            // 'topping_name' => ['cheese', 'tomato sauce', 'pepperoni', 'ham', 'chicken', 'minced beef', 'sausage', 'bacon']
+        $pizzaCollection = collect([
+            ['Margherita', 'cheese, tomato sauce'],
+            ['Gimme the Meat', 'cheese, tomato sauce, pepperoni, ham, chicken, minced beef, sausage, bacon'],
+            ['Veggie Delight', 'cheese, tomato sauce, onions, green peppers, mushrooms, sweetcorn'],
+            ['Make Mine Hot', 'cheese, tomato sauce, chicken, onions, green peppers, jalapeno peppers']
         ]);
 
-        DB::table('pizzas')->insert([
-            'pizza_name' => 'Veggie Delight',
-            'description' => 'cheese, tomato sauce, onions, green peppers, mushrooms, sweetcorn'
-            // 'size' => {'small': '', 'medium', 'large'}
-            // 'toppings'.add('cheese', 'tomato sauce', 'onions', 'green peppers', 'mushrooms', 'sweetcorn')
-            // 'topping_name' => ['cheese', 'tomato sauce', 'onions', 'green peppers', 'mushrooms', 'sweetcorn']
-        ]);
+        $pizzaCollection->eachSpread(function (string $name, string $description) {
+            DB::table('pizzas')->insert([
+                'pizza_name' => $name,
+                'description' => $description,
+            ]);
+        });
 
-        DB::table('pizzas')->insert([
-            'pizza_name' => 'Make Mine Hot',
-            'description' => 'cheese, tomato sauce, chicken, onions, green peppers, jalapeno peppers'
-            // 'size' => {'small': '', 'medium', 'large'}
-            // 'toppings' => ['cheese', 'tomato sauce', 'chicken', 'onions', 'green peppers', 'jalapeno peppers']
-            // 'toppings'.add('cheese', 'tomato sauce', 'chicken', 'onions', 'green peppers', 'jalapeno peppers')
-            // 'topping_name' => ['cheese', 'tomato sauce', 'chicken', 'onions', 'green peppers', 'jalapeno peppers']
-        ]);
+        $toppingCollection = collect(['cheese', 'tomato sauce', 'pepperoni', 'ham', 'chicken', 'minced beef', 
+        'sausage', 'bacon', 'onions', 'green peppers', 'mushrooms', 'sweetcorn', 'jalapeno peppers', 'vegan cheese', 
+        'pineapple', 'salami', 'olives', 'spicy beef', 'hot dog pieces']);
+
+        $toppingCollection->each(function (int $item, string $topping) {
+            DB::table('toppings')->insert([
+                'topping_name' => $topping,
+            ]);
+            // ...
+        });
+        // DB::table('pizzas')->insert([
+        //     'pizza_name' => 'Margherita',
+        //     'description' => 'cheese, tomato sauce'
+        //     // 'size' => ['small', 'medium', 'large']
+        //     // $table->json('size');
+        //     // 'toppings' => ['cheese', 'tomato sauce']
+        //     // 'toppings'.add('cheese', 'tomato sauce')
+        //     // 'topping_name' => ['cheese', 'tomato sauce']
+        //     // $pizza->toppings()->attach($topping)
+        // ]);
 
 
-        DB::table('toppings')->insert([
-            'topping_name' => 'cheese',
-        ]);
-        DB::table('toppings')->insert([
-            'topping_name' => 'tomato sauce',
-        ]);
-        DB::table('toppings')->insert([
-            'topping_name' => 'pepperoni',
-        ]);
-        DB::table('toppings')->insert([
-            'topping_name' => 'ham',
-        ]);
-        DB::table('toppings')->insert([
-            'topping_name' => 'chicken',
-        ]);
-        DB::table('toppings')->insert([
-            'topping_name' => 'minced beef',
-        ]);
-        DB::table('toppings')->insert([
-            'topping_name' => 'sausage',
-        ]);
-        DB::table('toppings')->insert([
-            'topping_name' => 'bacon',
-        ]);
-        DB::table('toppings')->insert([
-            'topping_name' => 'onions',
-        ]);
-        DB::table('toppings')->insert([
-            'topping_name' => 'green peppers',
-        ]);
-        DB::table('toppings')->insert([
-            'topping_name' => 'mushrooms',
-        ]);
-        DB::table('toppings')->insert([
-            'topping_name' => 'sweetcorn',
-        ]);
-        DB::table('toppings')->insert([
-            'topping_name' => 'jalapeno peppers',
-        ]);
-        DB::table('toppings')->insert([
-            'topping_name' => 'vegan cheese',
-        ]);
-        DB::table('toppings')->insert([
-            'topping_name' => 'pineapple',
-        ]);
-        DB::table('toppings')->insert([
-            'topping_name' => 'salami',
-        ]);
-        DB::table('toppings')->insert([
-            'topping_name' => 'olives',
-        ]);
-        DB::table('toppings')->insert([
-            'topping_name' => 'spicy beef',
-        ]);
-        DB::table('toppings')->insert([
-            'topping_name' => 'hot dog pieces',
-        ]);
+        // DB::table('pizzas')->insert([
+        //     'pizza_name' => 'Gimme the Meat',
+        //     'description' => 'cheese, tomato sauce, pepperoni, ham, chicken, minced beef, sausage, bacon'
+        //     // 'size' => {'small': '', 'medium', 'large'}
+        //     // 'toppings'.add('cheese', 'tomato sauce', 'pepperoni', 'ham', 'chicken', 'minced beef', 'sausage', 'bacon')
+        //     // 'topping_name' => ['cheese', 'tomato sauce', 'pepperoni', 'ham', 'chicken', 'minced beef', 'sausage', 'bacon']
+        // ]);
+
+        // DB::table('pizzas')->insert([
+        //     'pizza_name' => 'Veggie Delight',
+        //     'description' => 'cheese, tomato sauce, onions, green peppers, mushrooms, sweetcorn'
+        //     // 'size' => {'small': '', 'medium', 'large'}
+        //     // 'toppings'.add('cheese', 'tomato sauce', 'onions', 'green peppers', 'mushrooms', 'sweetcorn')
+        //     // 'topping_name' => ['cheese', 'tomato sauce', 'onions', 'green peppers', 'mushrooms', 'sweetcorn']
+        // ]);
+
+        // DB::table('pizzas')->insert([
+        //     'pizza_name' => 'Make Mine Hot',
+        //     'description' => 'cheese, tomato sauce, chicken, onions, green peppers, jalapeno peppers'
+        //     // 'size' => {'small': '', 'medium', 'large'}
+        //     // 'toppings' => ['cheese', 'tomato sauce', 'chicken', 'onions', 'green peppers', 'jalapeno peppers']
+        //     // 'toppings'.add('cheese', 'tomato sauce', 'chicken', 'onions', 'green peppers', 'jalapeno peppers')
+        //     // 'topping_name' => ['cheese', 'tomato sauce', 'chicken', 'onions', 'green peppers', 'jalapeno peppers']
+        // ]);
+
+
+        // DB::table('toppings')->insert([
+        //     'topping_name' => 'cheese',
+        // ]);
+        // DB::table('toppings')->insert([
+        //     'topping_name' => 'tomato sauce',
+        // ]);
+        // DB::table('toppings')->insert([
+        //     'topping_name' => 'pepperoni',
+        // ]);
+        // DB::table('toppings')->insert([
+        //     'topping_name' => 'ham',
+        // ]);
+        // DB::table('toppings')->insert([
+        //     'topping_name' => 'chicken',
+        // ]);
+        // DB::table('toppings')->insert([
+        //     'topping_name' => 'minced beef',
+        // ]);
+        // DB::table('toppings')->insert([
+        //     'topping_name' => 'sausage',
+        // ]);
+        // DB::table('toppings')->insert([
+        //     'topping_name' => 'bacon',
+        // ]);
+        // DB::table('toppings')->insert([
+        //     'topping_name' => 'onions',
+        // ]);
+        // DB::table('toppings')->insert([
+        //     'topping_name' => 'green peppers',
+        // ]);
+        // DB::table('toppings')->insert([
+        //     'topping_name' => 'mushrooms',
+        // ]);
+        // DB::table('toppings')->insert([
+        //     'topping_name' => 'sweetcorn',
+        // ]);
+        // DB::table('toppings')->insert([
+        //     'topping_name' => 'jalapeno peppers',
+        // ]);
+        // DB::table('toppings')->insert([
+        //     'topping_name' => 'vegan cheese',
+        // ]);
+        // DB::table('toppings')->insert([
+        //     'topping_name' => 'pineapple',
+        // ]);
+        // DB::table('toppings')->insert([
+        //     'topping_name' => 'salami',
+        // ]);
+        // DB::table('toppings')->insert([
+        //     'topping_name' => 'olives',
+        // ]);
+        // DB::table('toppings')->insert([
+        //     'topping_name' => 'spicy beef',
+        // ]);
+        // DB::table('toppings')->insert([
+        //     'topping_name' => 'hot dog pieces',
+        // ]);
 
 
 

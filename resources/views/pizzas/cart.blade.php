@@ -17,6 +17,10 @@
                 </div>
             </div>
             @endforeach
+            <form method="POST" action="{{ route('pizzas.order.add', $pizzas) }}">
+                @csrf
+                <x-primary-button class="mt-4">{{ __('Add to Order') }}</x-primary-button>
+            </form>
         </div>
     </div>
 </x-app-layout>

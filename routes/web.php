@@ -50,6 +50,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         '/pizzas/cart',
         [PizzaController::class, 'cart']
     )->name('pizzas.cart');
+    Route::post(
+        '/pizzas/cart/{pizzas}/addToOrder',
+        [PizzaController::class, 'addToOrder']
+    )->name('pizzas.order.add');
     // Route::post(
     //     '/pizzas/addToCart',
     //     [PizzaController::class, 'addToOrder']

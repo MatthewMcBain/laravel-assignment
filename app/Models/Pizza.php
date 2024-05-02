@@ -13,7 +13,8 @@ class Pizza extends Model
 
     protected $fillable = [
         'pizza_name',
-        'description'
+        'description',
+        'price'
     ];
 
     public function toppings(): HasMany

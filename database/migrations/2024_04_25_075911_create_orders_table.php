@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             // $table->string('pizza_name');
-            $table->double('price');
+            $table->double('price')->default(0);
             $table->timestamps();
         });
     }

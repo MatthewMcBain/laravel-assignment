@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
         DB::table('pizzas')->insert([
             'pizza_name' => 'Margherita',
             'description' => 'cheese, tomato sauce'
-            // 'size' => {'small': '', 'medium', 'large'}
+            // 'size' => ['small', 'medium', 'large']
+            // $table->json('size');
             // 'toppings' => ['cheese', 'tomato sauce']
             // 'toppings'.add('cheese', 'tomato sauce')
             // 'topping_name' => ['cheese', 'tomato sauce']

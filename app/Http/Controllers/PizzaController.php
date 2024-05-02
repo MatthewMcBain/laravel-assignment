@@ -22,13 +22,13 @@ class PizzaController extends Controller
 
     public function addToOrder(Pizza $pizza): RedirectResponse
     {
-        $validated = $pizza->validate([
-            'pizza_name' => 'required|string|max:255',
-        ]);
+        // $validated = $pizza->validate([
+        //     'pizza_name' => 'required|string|max:255',
+        // ]);
 
         // $request->user()->chirps()->create($validated);
         // $request->user()->pizzas()->create($validated);
-        $pizza->user()->orders()->create($validated);
+        $pizza->user()->orders()->create($pizza);
 
         // return redirect(route('pizzas.cart'));
         // $cart = session('cart', collect([]));

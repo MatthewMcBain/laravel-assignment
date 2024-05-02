@@ -20,7 +20,9 @@ class DatabaseSeeder extends Seeder
             // 'toppings' => ['cheese', 'tomato sauce']
             // 'toppings'.add('cheese', 'tomato sauce')
             // 'topping_name' => ['cheese', 'tomato sauce']
+            // $pizza->toppings()->attach($topping)
         ]);
+        
 
         DB::table('pizzas')->insert([
             'pizza_name' => 'Gimme the Meat',

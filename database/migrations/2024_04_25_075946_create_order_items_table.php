@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('order_items', function (Blueprint $table) {
             $table->id();
-            $table->string('pizza_name');
+            // $table->string('pizza_name');
             // $table->array('topping_name');
             // $table->json('topping_names');
             $table->string('size');

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('pizza_name');
             $table->string('description');
+            // $table->double('price');
             // $table->enum('size', ['small', 'medium', 'large']);
             // $table->enum('size', {'small': '', 'medium', 'large'});
             // $table->json('size'); - preferably

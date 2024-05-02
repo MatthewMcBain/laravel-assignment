@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
         'sausage', 'bacon', 'onions', 'green peppers', 'mushrooms', 'sweetcorn', 'jalapeno peppers', 'vegan cheese', 
         'pineapple', 'salami', 'olives', 'spicy beef', 'hot dog pieces']);
 
-        $toppingCollection->each(function (int $item, string $topping) {
+        $toppingCollection->each(function (string $topping) {
             DB::table('toppings')->insert([
                 'topping_name' => $topping,
             ]);

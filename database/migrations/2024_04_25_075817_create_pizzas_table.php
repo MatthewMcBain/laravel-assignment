@@ -16,10 +16,8 @@ return new class extends Migration
             // $table->foreignId('topping_id')->constrained();
             $table->string('pizza_name');
             $table->string('description');
+            $table->string('size');
             $table->double('price')->default(0);
-            // $table->enum('size', ['small', 'medium', 'large']);
-            // $table->enum('size', {'small': '', 'medium': '', 'large', ''});
-            // $table->json('size');
             // $table->json('topping_name');
             // $table->set('toppings', ['cheese', 'tomato sauce']);
             // $table->timestamps();

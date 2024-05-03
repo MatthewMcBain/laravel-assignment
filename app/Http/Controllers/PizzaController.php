@@ -19,6 +19,18 @@ class PizzaController extends Controller
         $cart->push($pizza);
         session(['cart' => $cart]);
         return redirect(route('pizzas.index'));
+        // $fields = Input::get('result');
+        // if($fields == 'buy'){
+        // // logic
+        // }
+        // else{
+        // // logic
+        // } 
+
+        // public function myMethod(Request $request){
+        //     //2nd parameter means, if radio is not selected then use default value
+        //     $radio = $request->get('radion_button', 0);
+        //   }
     }
 
     public function addToOrder(Request $request): RedirectResponse

@@ -14,16 +14,26 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $pizzaCollection = collect([
-            ['Margherita', 'cheese, tomato sauce'],
-            ['Gimme the Meat', 'cheese, tomato sauce, pepperoni, ham, chicken, minced beef, sausage, bacon'],
-            ['Veggie Delight', 'cheese, tomato sauce, onions, green peppers, mushrooms, sweetcorn'],
-            ['Make Mine Hot', 'cheese, tomato sauce, chicken, onions, green peppers, jalapeno peppers']
+            ['Margherita', 'cheese, tomato sauce', 'Small', 8],
+            ['Margherita', 'cheese, tomato sauce', 'Medium', 9],
+            ['Margherita', 'cheese, tomato sauce', 'Large', 12],
+            ['Gimme the Meat', 'cheese, tomato sauce, pepperoni, ham, chicken, minced beef, sausage, bacon', 'Small', 11],
+            ['Gimme the Meat', 'cheese, tomato sauce, pepperoni, ham, chicken, minced beef, sausage, bacon', 'Medium', 14.50],
+            ['Gimme the Meat', 'cheese, tomato sauce, pepperoni, ham, chicken, minced beef, sausage, bacon', 'Large', 16.50],
+            ['Veggie Delight', 'cheese, tomato sauce, onions, green peppers, mushrooms, sweetcorn', 'Small', 10],
+            ['Veggie Delight', 'cheese, tomato sauce, onions, green peppers, mushrooms, sweetcorn', 'Medium', 13],
+            ['Veggie Delight', 'cheese, tomato sauce, onions, green peppers, mushrooms, sweetcorn', 'Large',  15],
+            ['Make Mine Hot', 'cheese, tomato sauce, chicken, onions, green peppers, jalapeno peppers', 'Small', 11],
+            ['Make Mine Hot', 'cheese, tomato sauce, chicken, onions, green peppers, jalapeno peppers', 'Medium', 13],
+            ['Make Mine Hot', 'cheese, tomato sauce, chicken, onions, green peppers, jalapeno peppers', 'Large', 15]
         ]);
 
-        $pizzaCollection->eachSpread(function (string $name, string $description) {
+        $pizzaCollection->eachSpread(function (string $name, string $description, string $size, float $price) {
             DB::table('pizzas')->insert([
                 'pizza_name' => $name,
                 'description' => $description,
+                'size' => $size,
+                'price' => $price,
             ]);
         });
 

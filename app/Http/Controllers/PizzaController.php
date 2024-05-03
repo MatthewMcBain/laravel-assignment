@@ -19,18 +19,6 @@ class PizzaController extends Controller
         $cart->push($pizza);
         session(['cart' => $cart]);
         return redirect(route('pizzas.index'));
-        // $fields = Input::get('result');
-        // if($fields == 'buy'){
-        // // logic
-        // }
-        // else{
-        // // logic
-        // } 
-
-        // public function myMethod(Request $request){
-        //     //2nd parameter means, if radio is not selected then use default value
-        //     $radio = $request->get('radion_button', 0);
-        //   }
     }
 
     public function addToOrder(Request $request): RedirectResponse
@@ -52,16 +40,6 @@ class PizzaController extends Controller
             'pizzas' => $cart,
         ]);
     }
-
-        /**    * Show the Pizzas in Order
-     */
-    // public function orders(): View
-    // {
-    //     return view('pizzas.orders', [
-    //         'orders' => Order::with('user')->latest()->get(),
-    //     ]); 
-    // }
-
 
     /**
      * Display a listing of the resource.
@@ -92,15 +70,7 @@ class PizzaController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        // $validated = $request->validate([
-        //     'pizza_name' => 'required|string|max:255',
-        // ]);
-
-        // // $request->user()->chirps()->create($validated);
-        // // $request->user()->pizzas()->create($validated);
-        // $request->user()->orders()->create($validated);
-
-        // return redirect(route('pizzas.cart'));
+        //
     }
 
     

@@ -11,15 +11,10 @@ class OrderController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): View
+    public function index(Request $request): View
     {
-        //
-        // $orders = Order::with('user')->latest()->get();
-        // foreach ($orders as $order) {
-        //     return $order->user()->is($user);
-        // }
         return view('orders.index', [
-            'orders' => Order::with('user')->latest()->get(),
+            'orders' => $request->user()->orders,
         ]);
     }
 

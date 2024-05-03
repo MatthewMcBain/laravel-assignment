@@ -11,6 +11,9 @@
                     <div class="flex justify-between items-center">
                         <div>
                             <span class="text-gray-800">{{ $order->id }}</span>
+                            @foreach ($order->pizzas as $pizza)
+                                <p class="mt-4 text-lg text-gray-900">{{ $pizza->pizza_name }}</p>
+                            @endforeach
                         </div>
                     </div>
                 </div>

@@ -41,10 +41,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     //     '/orders/{order}',
     //     [OrderController::class, 'order']
     // )->name('orders.order');
+
     // Route::post(
-    //     '/pizzas/cart/addToOrder',
-    //     [PizzaController::class, 'addToOrder']
-    // )->name('pizzas.order.add');
+    //     '/orders/{order}/addToOrder',
+    //     [OrderController::class, 'addToOrder']
+    // )->name('orders.order.add');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {

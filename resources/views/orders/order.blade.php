@@ -16,7 +16,11 @@
                                 <p class="mt-4 text-lg text-gray-900">{{ $pizza->size }}</p>
                                 <p class="mt-4 text-lg text-gray-900">£{{ $pizza->price }}</p>
                             @endforeach
-                        </div>                        
+                        </div>
+                        <!-- <form method="POST" action="{{ route('orders.add', $pizza) }}">
+                            @csrf
+                            <x-primary-button class="mt-4">{{ __('Re-order') }}</x-primary-button>
+                        </form> -->
                     </div>
                 </div>
             </div>

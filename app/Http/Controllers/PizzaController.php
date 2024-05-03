@@ -23,10 +23,8 @@ class PizzaController extends Controller
 
     public function addToOrder(Request $request): RedirectResponse
     {
-        $order = new Order;
-        $order->user()->associate($request->user());
-        $order->pizza()->associate($request->pizza());
-        dd($order);
+        $order = $request->user()->orders()->create();
+        $order->pizzas()->sync($request->pizzas);
 
         return redirect(route('pizzas.index'));
     }
@@ -40,6 +38,15 @@ class PizzaController extends Controller
         return view('pizzas.cart', [
             'pizzas' => $cart,
         ]);
+    }
+
+        /**    * Show the Pizzas in Order
+     */
+    public function orders(): View
+    {
+        return view('pizzas.orders', [
+            'orders' => Order::with('user')->latest()->get(),
+        ]); 
     }
 
 

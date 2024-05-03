@@ -34,6 +34,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
+    Route::resource('pizzas/orders', PizzaController::class)
+    ->only(['index', 'store']);
     Route::resource('pizzas', PizzaController::class)
         ->only(['index', 'store']);
     Route::post(

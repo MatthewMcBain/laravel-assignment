@@ -35,8 +35,10 @@ class DatabaseSeeder extends Seeder
             DB::table('toppings')->insert([
                 'topping_name' => $topping,
             ]);
-            // ...
         });
+        // $pizza->toppings()->attach($topping)
+        
+
         // DB::table('pizzas')->insert([
         //     'pizza_name' => 'Margherita',
         //     'description' => 'cheese, tomato sauce'
@@ -45,7 +47,6 @@ class DatabaseSeeder extends Seeder
         //     // 'toppings' => ['cheese', 'tomato sauce']
         //     // 'toppings'.add('cheese', 'tomato sauce')
         //     // 'topping_name' => ['cheese', 'tomato sauce']
-        //     // $pizza->toppings()->attach($topping)
         // ]);
 
 

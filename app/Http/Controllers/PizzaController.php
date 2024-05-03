@@ -25,7 +25,8 @@ class PizzaController extends Controller
     {
         $order = $request->user()->orders()->create();
         $order->pizzas()->sync($request->pizzas);
-
+        $cart = session('cart', collect([]));
+        session(['cart' => $cart]);
         return redirect(route('pizzas.index'));
     }
 
@@ -42,12 +43,12 @@ class PizzaController extends Controller
 
         /**    * Show the Pizzas in Order
      */
-    public function orders(): View
-    {
-        return view('pizzas.orders', [
-            'orders' => Order::with('user')->latest()->get(),
-        ]); 
-    }
+    // public function orders(): View
+    // {
+    //     return view('pizzas.orders', [
+    //         'orders' => Order::with('user')->latest()->get(),
+    //     ]); 
+    // }
 
 
     /**

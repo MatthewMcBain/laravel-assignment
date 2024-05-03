@@ -15,7 +15,7 @@ class OrderController extends Controller
     {
         //
         return view('orders.index', [
-            'orders' => Order::get(),
+            'orders' => Order::with('user')->latest()->get(),
         ]);
     }
 

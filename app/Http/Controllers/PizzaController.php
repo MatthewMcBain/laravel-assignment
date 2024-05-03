@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pizza;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
@@ -20,20 +21,12 @@ class PizzaController extends Controller
         return redirect(route('pizzas.index'));
     }
 
-    public function addToOrder(Pizza $pizzas): RedirectResponse
+    public function addToOrder(Request $request): RedirectResponse
     {
-        // $validated = $pizza->validate([
-        //     'pizza_name' => 'required|string|max:255',
-        // ]);
-
-        // $request->user()->chirps()->create($validated);
-        // $request->user()->pizzas()->create($validated);
-        $pizzas->user()->orders()->create();
-
-        // return redirect(route('pizzas.cart'));
-        // $cart = session('cart', collect([]));
-        // $cart->push($pizza);
-        // session(['cart' => $cart]);
+        $order = new Order;
+        $order->user()->associate($request->user());
+        $order->pizza()->associate($request->pizza());
+        dd($order);
 
         return redirect(route('pizzas.index'));
     }

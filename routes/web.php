@@ -33,12 +33,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Route::resource('pizzas', PizzaController::class)
-
-//     ->only(['index', 'store'])
-
-//     ->middleware(['auth', 'verified']);
-
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('pizzas', PizzaController::class)
         ->only(['index', 'store']);
@@ -51,16 +45,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
         [PizzaController::class, 'cart']
     )->name('pizzas.cart');
     Route::post(
-        '/pizzas/cart/{pizzas}/addToOrder',
+        '/pizzas/cart/addToOrder',
         [PizzaController::class, 'addToOrder']
     )->name('pizzas.order.add');
-    // Route::post(
-    //     '/pizzas/addToCart',
-    //     [PizzaController::class, 'addToOrder']
-    // )->name('pizzas.cart.order.add');
-
-    // Route::resource('cart', PizzaController::class)
-    //     ->only(['index', 'store']);
 });
 
 require __DIR__ . '/auth.php';

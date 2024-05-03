@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            // $table->string('pizza_name');
             $table->double('price')->default(0);
             $table->timestamps();
         });

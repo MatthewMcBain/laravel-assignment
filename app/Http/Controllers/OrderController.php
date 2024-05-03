@@ -14,6 +14,10 @@ class OrderController extends Controller
     public function index(): View
     {
         //
+        // $orders = Order::with('user')->latest()->get();
+        // foreach ($orders as $order) {
+        //     return $order->user()->is($user);
+        // }
         return view('orders.index', [
             'orders' => Order::with('user')->latest()->get(),
         ]);

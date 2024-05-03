@@ -18,6 +18,14 @@ class OrderController extends Controller
         ]);
     }
 
+    public function order(Order $order): View
+    {
+        //
+        return view('orders.order', [
+            'order' => $order,
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

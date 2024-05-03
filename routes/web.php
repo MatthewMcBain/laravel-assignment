@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\PizzaController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,8 +35,13 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::resource('pizzas/orders', PizzaController::class)
-    ->only(['index', 'store']);
+    Route::resource('orders', OrderController::class)
+        ->only(['index', 'store']);
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    // Route::resource('pizzas/orders', PizzaController::class)
+    //     ->only(['index', 'store']);
     Route::resource('pizzas', PizzaController::class)
         ->only(['index', 'store']);
     Route::post(

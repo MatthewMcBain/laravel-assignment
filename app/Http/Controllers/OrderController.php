@@ -20,10 +20,7 @@ class OrderController extends Controller
 
     public function order(Order $order): View
     {
-        //
-        return view('orders.order', [
-            'order' => $order,
-        ]);
+ 
     }
 
     /**
@@ -47,7 +44,10 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+       //
+       return view('orders.order', [
+        'order' => $order,
+       ]);
     }
 
     /**

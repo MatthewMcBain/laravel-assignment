@@ -18,7 +18,7 @@
                                 <p class="mt-4 text-lg text-gray-900">£{{ $pizza->price }}</p>
                             @endforeach
                         </div>
-                        <x-primary-button :href="route('orders.order', $order)">{{ __('View') }}</x-primary-button>
+                        <a href="{{ route('orders.show', $order) }}">{{ __('View') }}</a>
                     </div>
                 </div>
             </div>

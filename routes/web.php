@@ -36,11 +36,11 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('orders', OrderController::class)
-        ->only(['index', 'store']);
-    Route::get(
-        '/orders/order',
-        [OrderController::class, 'order']
-    )->name('orders.order');
+        ->only(['index', 'store', 'show']);
+    // Route::get(
+    //     '/orders/{order}',
+    //     [OrderController::class, 'order']
+    // )->name('orders.order');
     // Route::post(
     //     '/pizzas/cart/addToOrder',
     //     [PizzaController::class, 'addToOrder']
@@ -48,8 +48,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    // Route::resource('pizzas/orders', PizzaController::class)
-    //     ->only(['index', 'store']);
     Route::resource('pizzas', PizzaController::class)
         ->only(['index', 'store']);
     Route::post(

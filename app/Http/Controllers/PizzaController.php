@@ -79,15 +79,15 @@ class PizzaController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        $validated = $request->validate([
-            'pizza_name' => 'required|string|max:255',
-        ]);
+        // $validated = $request->validate([
+        //     'pizza_name' => 'required|string|max:255',
+        // ]);
 
-        // $request->user()->chirps()->create($validated);
-        // $request->user()->pizzas()->create($validated);
-        $request->user()->orders()->create($validated);
+        // // $request->user()->chirps()->create($validated);
+        // // $request->user()->pizzas()->create($validated);
+        // $request->user()->orders()->create($validated);
 
-        return redirect(route('pizzas.cart'));
+        // return redirect(route('pizzas.cart'));
     }
 
     

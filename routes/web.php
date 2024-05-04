@@ -20,10 +20,6 @@ use Illuminate\Support\Facades\Route;
 Route::resource('/', WelcomeController::class)
     ->only(['index']);
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -37,15 +33,6 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('orders', OrderController::class)
         ->only(['index', 'store', 'show']);
-    // Route::get(
-    //     '/orders/{order}',
-    //     [OrderController::class, 'order']
-    // )->name('orders.order');
-
-    // Route::post(
-    //     '/orders/{order}/addToOrder',
-    //     [OrderController::class, 'addToOrder']
-    // )->name('orders.order.add');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {

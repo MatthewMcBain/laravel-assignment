@@ -5,11 +5,7 @@
         </h2>
 
         <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
-            <div class="flex justify-between items-center">
-                <div>
-                    <span class="text-gray-800">{{ $order->id }}</span>
-                </div>
-            </div>   
+            <span class="text-gray-800">{{ $order->id }}</span>
             <form method="POST" action="{{ route('pizzas.order.add') }}">
                 @csrf
                 @foreach ($order->pizzas as $pizza)

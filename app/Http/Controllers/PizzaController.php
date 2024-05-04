@@ -24,7 +24,7 @@ class PizzaController extends Controller
         $order = $request->user()->orders()->create();
         $order->pizzas()->sync($request->pizzas);
         $request->session()->forget('cart');
-        return redirect(route('pizzas.index'));
+        return redirect(route('orders.index'));
     }
 
 

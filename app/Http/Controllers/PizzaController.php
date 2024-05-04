@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pizza;
-use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
 use Illuminate\View\View;
 
 class PizzaController extends Controller
@@ -63,8 +61,6 @@ class PizzaController extends Controller
     {
         //
     }
-
-    
 
     /**
      * Display the specified resource.

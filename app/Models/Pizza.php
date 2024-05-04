@@ -14,17 +14,13 @@ class Pizza extends Model
     protected $fillable = [
         'pizza_name',
         'description',
+        'size',
         'price'
     ];
 
     public function toppings(): HasMany
     {
         return $this->HasMany(Topping::class);
-    }
-
-    public function orderItems(): HasMany
-    {
-        return $this->hasMany(OrderItem::class);
     }
 
     public function orders(): BelongsToMany

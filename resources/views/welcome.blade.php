@@ -53,6 +53,8 @@
                                         </div>
                                     </div>
                                     <p class="mt-4 text-lg text-gray-900">{{ $pizza->description }}</p>
+                                    <p class="mt-4 text-lg text-gray-900">{{ $pizza->size }}</p>
+                                    <p class="mt-4 text-lg text-gray-900">£{{ $pizza->price }}</p>
                                 </div>
                             </div>
                         @endforeach

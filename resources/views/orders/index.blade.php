@@ -16,7 +16,7 @@
                                 <p class="mt-4 text-lg text-gray-900">{{ $pizza->size }}</p>
                             @endforeach
                         </div>
-                        <a href="{{ route('orders.show', $order) }}">{{ __('View') }}</a>
+                        <a href="{{ route('orders.show', $order) }}" class="px-6 py-3 text-white no-underline bg-black rounded hover:bg-slate-800 hover:text-white">{{ __('View') }}</a>
                     </div>
                 </div>
             </div>

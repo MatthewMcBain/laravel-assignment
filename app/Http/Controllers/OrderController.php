@@ -18,10 +18,10 @@ class OrderController extends Controller
         ]);
     }
 
-    public function order(Order $order): View
-    {
+    // public function order(Order $order): View
+    // {
  
-    }
+    // }
 
     /**
      * Show the form for creating a new resource.

@@ -25,8 +25,7 @@ class PizzaController extends Controller
     {
         $order = $request->user()->orders()->create();
         $order->pizzas()->sync($request->pizzas);
-        $cart = session('cart', collect([]));
-        session(['cart' => $cart]);
+        $request->session()->forget('cart');
         return redirect(route('pizzas.index'));
     }
 
@@ -60,15 +59,7 @@ class PizzaController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    // public function store(Request $request)
-    // {
-    //     //
-    // }
-
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         //
     }

@@ -18,11 +18,6 @@ class OrderController extends Controller
         ]);
     }
 
-    // public function order(Order $order): View
-    // {
- 
-    // }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -44,7 +39,6 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-       //
        return view('orders.order', [
         'order' => $order,
        ]);

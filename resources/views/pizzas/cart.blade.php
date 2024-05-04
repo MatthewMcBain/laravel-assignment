@@ -5,25 +5,25 @@
         </h2>
 
         <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
-        <form method="POST" action="{{ route('pizzas.order.add') }}">
-            @csrf
-            @foreach ($pizzas as $pizza)
-                <div class="p-6 flex space-x-2">
-                    <div class="flex-1">
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <span class="text-gray-800">{{ $pizza->pizza_name }}</span>
+            <form method="POST" action="{{ route('pizzas.order.add') }}">
+                @csrf
+                @foreach ($pizzas as $pizza)
+                    <div class="p-6 flex space-x-2">
+                        <div class="flex-1">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <span class="text-gray-800">{{ $pizza->pizza_name }}</span>
+                                </div>
                             </div>
+                            <p class="mt-4 text-lg text-gray-900">{{ $pizza->description }}</p>
+                            <p class="mt-4 text-lg text-gray-900">{{ $pizza->size }}</p>
+                            <p class="mt-4 text-lg text-gray-900">£{{ $pizza->price }}</p>
                         </div>
-                        <p class="mt-4 text-lg text-gray-900">{{ $pizza->description }}</p>
-                        <p class="mt-4 text-lg text-gray-900">{{ $pizza->size }}</p>
-                        <p class="mt-4 text-lg text-gray-900">£{{ $pizza->price }}</p>
                     </div>
-                </div>
-            <input type="hidden" name="pizzas[]" value="{{ $pizza->id }}" >
-            @endforeach
-            <x-primary-button class="mt-4">{{ __('Add to Order') }}</x-primary-button>
-        </form>
+                    <input type="hidden" name="pizzas[]" value="{{ $pizza->id }}">
+                @endforeach
+                <x-primary-button class="mt-4">{{ __('Add to Order') }}</x-primary-button>
+            </form>
         </div>
     </div>
 </x-app-layout>

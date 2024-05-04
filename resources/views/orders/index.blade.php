@@ -13,9 +13,7 @@
                             <span class="text-gray-800">{{ $order->id }}</span>
                             @foreach ($order->pizzas as $pizza)
                                 <p class="mt-4 text-lg text-gray-900">{{ $pizza->pizza_name }}</p>
-                                <p class="mt-4 text-lg text-gray-900">{{ $pizza->description }}</p>
                                 <p class="mt-4 text-lg text-gray-900">{{ $pizza->size }}</p>
-                                <p class="mt-4 text-lg text-gray-900">£{{ $pizza->price }}</p>
                             @endforeach
                         </div>
                         <a href="{{ route('orders.show', $order) }}">{{ __('View') }}</a>

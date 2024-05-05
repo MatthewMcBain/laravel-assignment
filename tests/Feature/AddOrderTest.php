@@ -14,14 +14,16 @@ class AddOrderTest extends TestCase
     /**
      * Testing the pizzas from the cart can be added to the order.
      */
-    
+
     public function test_add_pizzas_from_cart_to_order(): void
     {
         $user = User::factory()->create(['name' => 'Taylor']);
         $this->seed();
+        
         $response = $this->actingAs($user)
             ->withSession(['banned' => false])
             ->get('/pizzas/cart');
+            // change get to post and use session
         $pizzas = Pizza::get();
         // dd($pizzas[0]->pizza_name);
         $cart = session('cart', collect([]));
@@ -35,6 +37,12 @@ class AddOrderTest extends TestCase
             $this->assertContains($pizzas[$i], session('cart', collect([])));
             $this->assertContains($pizzas[$i], $cart);
         }
+        
+        $this->post('/login', [
+            'email' => $user->email,
+            'password' => 'wrong-password',
+        ]);
+        $response = $this->actingAs($user)->post('/logout');
 
         dd(orders());
         $order = $cart->orders()->create();

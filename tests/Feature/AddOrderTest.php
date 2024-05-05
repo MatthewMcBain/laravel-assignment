@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Pizza;
+use App\Models\Order;
 
 class AddOrderTest extends TestCase
 {
@@ -15,8 +16,11 @@ class AddOrderTest extends TestCase
      */
     public function test_add_pizzas_from_cart_to_order(): void
     {
-        // $user = User::factory()->create(['name' => 'Taylor']);
+        $user = User::factory()->create(['name' => 'Taylor']);
         $this->seed();
+        $response = $this->actingAs($user)
+            ->withSession(['banned' => false])
+            ->get('/pizzas/cart');
         $pizzas = Pizza::get();
         // dd($pizzas[0]->pizza_name);
         $cart = session('cart', collect([]));
@@ -31,6 +35,8 @@ class AddOrderTest extends TestCase
             $this->assertContains($pizzas[$i], $cart);
         }
 
+        dd(orders());
+        $order = $cart->orders()->create();
         $order = $cart->user()->orders()->create();
         $order->pizzas()->sync($cart->pizzas);
         dd($order);

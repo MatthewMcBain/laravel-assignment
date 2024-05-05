@@ -13,7 +13,7 @@ class PagesTest extends TestCase
     /**
      * A basic feature test example.
      */
-
+    use RefreshDatabase;
 
     public function test_missing_page_does_not_exist(): void
     {
@@ -34,7 +34,6 @@ class PagesTest extends TestCase
     public function test_dashboard_page_exists(): void
     {
         $user = User::factory()->create();
-        $this->seed();
 
         $response = $this->actingAs($user)
             ->withSession(['banned' => false])
@@ -47,7 +46,6 @@ class PagesTest extends TestCase
     public function test_pizza_page_exists(): void
     {
         $user = User::factory()->create();
-        $this->seed();
 
         $response = $this->actingAs($user)
             ->withSession(['banned' => false])
@@ -60,7 +58,6 @@ class PagesTest extends TestCase
     public function test_cart_page_exists(): void
     {
         $user = User::factory()->create();
-        $this->seed();
 
         $response = $this->actingAs($user)
             ->withSession(['banned' => false])
@@ -73,7 +70,6 @@ class PagesTest extends TestCase
     public function test_order_page_exists(): void
     {
         $user = User::factory()->create();
-        $this->seed();
 
         $response = $this->actingAs($user)
             ->withSession(['banned' => false])
@@ -82,16 +78,4 @@ class PagesTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('Orders');
     }
-
-    // public function test_pizzas_page(): void
-    // {
-    //     $user = User::factory()->create(['name' => 'Taylor']);
-    //     $this->seed();
-    //     $pizzas = Pizza::get();
-    //     // dd($pizzas);
-    //     // dd($user->name);
-    //     $view = $this->view('pizzas.index', $pizzas);
-
-    //     $view->assertSee($user->name);
-    // }
 }

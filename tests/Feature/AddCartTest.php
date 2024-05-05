@@ -10,8 +10,9 @@ use App\Models\Pizza;
 class AddCartTest extends TestCase
 {
     /**
-     * A basic feature test example.
+     * Testing the pizzas can be added to the cart.
      */
+    
     public function test_add_pizza_to_cart(): void
     {
         // $user = User::factory()->create(['name' => 'Taylor']);

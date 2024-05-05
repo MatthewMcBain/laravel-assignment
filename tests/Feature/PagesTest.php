@@ -11,8 +11,9 @@ use App\Models\Pizza;
 class PagesTest extends TestCase
 {
     /**
-     * A basic feature test example.
+     * Test main pages work and 404 error on missing page
      */
+    
     use RefreshDatabase;
 
     public function test_missing_page_does_not_exist(): void

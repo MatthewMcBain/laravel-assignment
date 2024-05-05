@@ -13,7 +13,25 @@ class PagesTest extends TestCase
     /**
      * A basic feature test example.
      */
-    public function test_dashboard_page_(): void
+
+
+    public function test_missing_page_does_not_exist(): void
+    {
+        $response = $this->get('/missing-page');
+
+        $response->assertStatus(404);
+    }
+
+    public function test_welcome_page_exists(): void
+    {
+        $response = $this->get('/');
+
+        $response->assertStatus(200);
+        $response->assertSee('Pizzas');
+        $response->assertSee('Toppings');
+    }
+
+    public function test_dashboard_page_exists(): void
     {
         $user = User::factory()->create();
         $this->seed();
@@ -26,7 +44,7 @@ class PagesTest extends TestCase
         $response->assertSee('Dashboard');
     }
 
-    public function test_pizza_page(): void
+    public function test_pizza_page_exists(): void
     {
         $user = User::factory()->create();
         $this->seed();
@@ -39,7 +57,7 @@ class PagesTest extends TestCase
         $response->assertSee('Pizzas');
     }
 
-    public function test_cart_page(): void
+    public function test_cart_page_exists(): void
     {
         $user = User::factory()->create();
         $this->seed();
@@ -52,7 +70,7 @@ class PagesTest extends TestCase
         $response->assertSee('Cart');
     }
 
-    public function test_order_page(): void
+    public function test_order_page_exists(): void
     {
         $user = User::factory()->create();
         $this->seed();
@@ -64,7 +82,7 @@ class PagesTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('Orders');
     }
-    
+
     // public function test_pizzas_page(): void
     // {
     //     $user = User::factory()->create(['name' => 'Taylor']);
@@ -73,7 +91,7 @@ class PagesTest extends TestCase
     //     // dd($pizzas);
     //     // dd($user->name);
     //     $view = $this->view('pizzas.index', $pizzas);
-        
+
     //     $view->assertSee($user->name);
     // }
 }

@@ -6,23 +6,30 @@
 
         <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
             <form method="POST" action="{{ route('pizzas.order.add') }}">
+                <div class="hidden">{{$runningTotal = 0}} </div>
                 @csrf
                 @foreach ($pizzas as $pizza)
-                    <div class="p-6 flex space-x-2">
-                        <div class="flex-1">
-                            <div class="flex justify-between items-center">
-                                <div>
-                                    <span class="text-gray-800">{{ $pizza->pizza_name }}</span>
-                                </div>
+                <div class="hidden">{{ $runningTotal += $pizza->price}} </div>
+                <div class="p-6 flex space-x-2">
+                    <div class="flex-1">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-gray-800">{{ $pizza->pizza_name }}</span>
                             </div>
-                            <p class="mt-4 text-lg text-gray-900">{{ $pizza->description }}</p>
-                            <p class="mt-4 text-lg text-gray-900">{{ $pizza->size }}</p>
-                            <p class="mt-4 text-lg text-gray-900">£{{ $pizza->price }}</p>
                         </div>
+                        <p class="mt-4 text-lg text-gray-900">{{ $pizza->description }}</p>
+                        <p class="mt-4 text-lg text-gray-900">{{ $pizza->size }}</p>
+                        <p class="mt-4 text-lg text-gray-900">£{{ $pizza->price }}</p>
                     </div>
-                    <input type="hidden" name="pizzas[]" value="{{ $pizza->id }}">
+                </div>
+                <input type="hidden" name="pizzas[]" value="{{ $pizza->id }}">
                 @endforeach
-                <x-primary-button class="mt-4">{{ __('Add to Order') }}</x-primary-button>
+                <div class="pl-6 flex space-x-2">
+                    <div class="flex-1">
+                        <p class="mt-4 text-lg text-gray-900">Total: £{{ $runningTotal }} </p>
+                        <x-primary-button class="mt-4">{{ __('Add to Order') }}</x-primary-button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

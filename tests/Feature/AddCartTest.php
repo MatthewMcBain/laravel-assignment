@@ -23,16 +23,15 @@ class AddCartTest extends TestCase
         // $cart->push($pizzas[1]);
         session(['cart' => $cart]);
         // dd($cart);
-        $this->assertContains($pizzas[0], session('cart', collect([])));
         $this->assertContains($pizzas[0], $cart);
+        $this->assertContains($pizzas[0], session('cart', collect([])));
+        $this->assertNotContains($pizzas[1], $cart);
+        $this->assertNotContains($pizzas[1], session('cart', collect([])));
+        
     }
 
     public function test_add_pizzas_to_cart(): void
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
-
         // $user = User::factory()->create(['name' => 'Taylor']);
         $this->seed();
         $pizzas = Pizza::get();
@@ -45,8 +44,10 @@ class AddCartTest extends TestCase
         session(['cart' => $cart]);
         // dd($cart);
         for ($i = 0; $i < 3; $i++) {
-            $this->assertContains($pizzas[$i], session('cart', collect([])));
             $this->assertContains($pizzas[$i], $cart);
+            $this->assertContains($pizzas[$i], session('cart', collect([])));           
         }
+        $this->assertNotContains($pizzas[3], $cart);
+        $this->assertNotContains($pizzas[3], session('cart', collect([])));
     }
 }

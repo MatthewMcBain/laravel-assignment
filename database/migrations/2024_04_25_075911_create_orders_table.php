@@ -15,6 +15,7 @@ return new class extends Migration
             $table->increments('id');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->double('price')->default(0);
+            $table->string('collection')->default("collection");
             $table->timestamps();
         });
     }

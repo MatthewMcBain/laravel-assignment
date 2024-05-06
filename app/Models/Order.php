@@ -12,7 +12,8 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
-        'price'
+        'price',
+        'collection'
     ];
 
     public function pizzas(): BelongsToMany

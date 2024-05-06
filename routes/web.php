@@ -33,6 +33,10 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('orders', OrderController::class)
         ->only(['index', 'store', 'show']);
+    Route::post(
+        '/orders/addToOrder',
+        [OrderController::class, 'addToOrder']
+    )->name('orders.order.add');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {

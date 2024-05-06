@@ -23,6 +23,13 @@ class PizzaController extends Controller
     {
         $order = $request->user()->orders()->create();
         $order->pizzas()->sync($request->pizzas);
+        $total = $request->total;
+        if ($request->collection == "delivery") {
+            $total += 5;
+        }
+        $order->collection = $request->collection;
+        $order->price = $total;
+        $order->save();
         $request->session()->forget('cart');
         return redirect(route('orders.index'));
     }
@@ -33,9 +40,14 @@ class PizzaController extends Controller
     public function cart(): View
     {
         $cart = session('cart', collect([]));
+        $total = 0;
+        foreach ($cart as $pizza) {
+            $total += $pizza->price;
+        }
         return view('pizzas.cart', [
             'pizzas' => $cart,
-        ]);
+            'total' => $total
+        ]);        
     }
 
     /**

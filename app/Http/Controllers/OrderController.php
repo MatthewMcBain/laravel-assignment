@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 class OrderController extends Controller
@@ -16,6 +17,16 @@ class OrderController extends Controller
         return view('orders.index', [
             'orders' => $request->user()->orders,
         ]);
+    }
+
+    public function addToOrder(Request $request): RedirectResponse
+    {
+        $order = $request->user()->orders()->create();
+        $order->pizzas()->sync($request->pizzas);
+        $order->collection = $request->collection;
+        $order->price = $request->total;
+        $order->save();
+        return redirect(route('orders.index'));
     }
 
     /**

@@ -6,10 +6,8 @@
 
         <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
             <form method="POST" action="{{ route('pizzas.order.add') }}">
-                <div class="hidden">{{$runningTotal = 0}} </div>
                 @csrf
                 @foreach ($pizzas as $pizza)
-                <div class="hidden">{{ $runningTotal += $pizza->price}} </div>
                 <div class="p-6 flex space-x-2">
                     <div class="flex-1">
                         <div class="flex justify-between items-center">
@@ -24,9 +22,20 @@
                 </div>
                 <input type="hidden" name="pizzas[]" value="{{ $pizza->id }}">
                 @endforeach
+                <input type="hidden" name="total" value={{ $total }}>
                 <div class="pl-6 flex space-x-2">
                     <div class="flex-1">
-                        <p class="mt-4 text-lg text-gray-900">Total: £{{ $runningTotal }} </p>
+                        <div class="space-y-4">
+                            <label>
+                                <input type="radio" name="collection" value="collection" checked />
+                                Collection
+                            </label>
+                            <label>
+                                <input type="radio" name="collection" value="delivery" />
+                                Delivery
+                            </label>
+                        </div>
+                        <p class="mt-4 text-lg text-gray-900">Total: £{{ $total }} </p>
                         <x-primary-button class="mt-4">{{ __('Add to Order') }}</x-primary-button>
                     </div>
                 </div>
